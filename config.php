@@ -1,6 +1,6 @@
 <?php
 return array(
-        'api' => 'https://europe-west.traaitt.com',
+        'api' => 'https://xtcashexplorer.trrxitte.com',
         'blockTargetInterval' => 144,
         'coinUnits' => 100
 );
