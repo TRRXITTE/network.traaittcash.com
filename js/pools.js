@@ -46,7 +46,7 @@ var renderPoolRow = function(host, name, data, d) {
     pools_row.push('<td id=hashrate-'+name+'>'+localizeNumber(data.pool.hashrate)+' H/s</td>');
     pools_row.push('<td id=miners-'+name+'>'+localizeNumber(data.pool.miners)+'</td>');
     pools_row.push('<td id=totalFee-'+name+'>'+calculateTotalFee(data)+'%</td>');
-    pools_row.push('<td id=minPayout-'+name+'>'+getReadableCoins(data.config.minPaymentThreshold,2)+'</td>');
+    pools_row.push('<td id=minPayout-'+name+'>'+getReadableCoins(data.config.minPaymentThreshold,8)+'</td>');
     pools_row.push('<td><span id=lastFound-'+name+'>'+datestring+'</span> (<span class="timeago" id="ago-'+name+'">'+agostring+'</span>)</td>');
     pools_row.push('</tr>');
 
@@ -209,7 +209,7 @@ NETWORK_STAT_MAP2.forEach(function(url, host, map) {
 
         $.getJSON(url + '/config', function(data, textStatus, jqXHR) {
             updateText('totalFee-'+poolName, "PPLNS: "+data.pplns_fee+"%,\nPPS: "+data.pps_fee+"%,\nSolo: "+data.solo_fee+"%");
-            updateText('minPayout-'+poolName, "Wallet: "+getReadableCoins(data.min_wallet_payout,2)+",\nExchange: "+getReadableCoins(data.min_exchange_payout,2));
+            updateText('minPayout-'+poolName, "Wallet: "+getReadableCoins(data.min_wallet_payout,8)+",\nExchange: "+getReadableCoins(data.min_exchange_payout,8));
         });
     }).always(function() {
         lazyRefreshChart();
@@ -399,7 +399,7 @@ function calcEstimateProfit(){
         var hashRate = parseFloat($('#calcHashRate').val()) * rateUnit;
         var profit = (hashRate * 86400 / avgDiff /*lastStats.difficulty*/) * lastReward;
         if (profit) {
-            updateText('calcHashAmount', getReadableCoins(profit, 2, true));
+            updateText('calcHashAmount', getReadableCoins(profit, 8, true));
             return;
         }
     }

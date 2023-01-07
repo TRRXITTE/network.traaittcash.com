@@ -29,7 +29,7 @@ function checkTxn(transactionResponse, privateKey, address, privateKeyType) {
     var s = 8, m = s + 64, e = m + 64; //offsets
     if (privateKey.length !== 64 || validHex(privateKey) !== true){
         results.error = "Invalid private key.";
-    } else if (address.length != 99 || (addrHex.slice(-s) !== cn_fast_hash(addrHex.slice(0,-s)).slice(0,s))) {
+    } else if (address.length != 98 || (addrHex.slice(-s) !== cn_fast_hash(addrHex.slice(0,-s)).slice(0,s))) {
         results.error = "Bad address";
     } else if (privateKeyType === 'view' && addrHex.slice(m,e) !== sec_key_to_pub(privateKey)) {
 	results.error = "Secret View key does not match address.";
@@ -108,7 +108,7 @@ $("#check_transaction").click(function() {
                 $("#outputs_rows").html("");
                 for (var o in results.owned) {
                     var owned = results.owned[o];
-                    var row = "<tr><td>" + owned[2] + "</td><td>" + owned[1] + "</td></tr>";
+                    var row = "<tr><td>" + owned[8] + "</td><td>" + owned[1] + "</td></tr>";
                     $("#outputs_rows").append(row);
                 }
             }

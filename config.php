@@ -2,5 +2,5 @@
 return array(
         'api' => 'https://xtcashexplorer.trrxitte.com',
         'blockTargetInterval' => 144,
-        'coinUnits' => 100
+        'coinUnits' => 100000000
 );

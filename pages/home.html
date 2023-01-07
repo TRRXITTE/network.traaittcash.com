@@ -457,8 +457,8 @@
                         var timestamp = Date().now; // this is not yet part of the json that gets returned in f_transactions_pool_json, leave for now
                         var columns =
                             /*'<td>' + formatDate(timestamp) + ' (<span class="mtx-ago"></span>)' + '</td>' +*/
-                            '<td>' + getReadableCoins(amount, 4, true) + '</td>' +
-                            '<td>' + getReadableCoins(fee, 4, true) + '</td>' +
+                            '<td>' + getReadableCoins(amount, 8, true) + '</td>' +
+                            '<td>' + getReadableCoins(fee, 8, true) + '</td>' +
                             '<td>' + localizeNumber(size) + '</td>' +
                             '<td>' + formatPaymentLink(hash) + '</td>';
                         row.innerHTML = columns;
